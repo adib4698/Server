@@ -1,0 +1,9 @@
+databaseChangeLog:
+- changeSet:
+    id: 2
+    author: Adrian Barsan
+    changes:
+    - sqlFile:
+        path: changes/changelog_auth.sql
+        relativeToChangelogFile: true
+        stripComments: true
