@@ -31,6 +31,7 @@ public class TutorialPersistence {
     private String category;
     @Column(name = "rating")
     private Integer rating;
-
+    @Column(name = "visibility")
+    private Integer visibility;
 
 }

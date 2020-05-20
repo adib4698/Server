@@ -1,0 +1,46 @@
+version: '3'
+services:
+  # Database
+  game-mysql-db:
+    image: mysql:5.7
+    container_name: game-mysql-db
+    hostname: mysql-game
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'creativecreators'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    networks:
+      - boardify-app-network
+
+
+
+  boardify-game-service:
+    build:
+      context: /
+      args:
+        JAR_FILE: Server-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    image: game
+    container_name: boardify-game-service
+    hostname: boardify-game-service
+    ports:
+      - "8083:8083"
+    networks:
+      - boardify-app-network
+    environment:
+      - SERVER_PORT=8083
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka
+      - SPRING_PROFILES_ACTIVE=production
+      - SPRING_DATASOURCE_URL:jdbc:mysql://game-mysql-db:3306/boardify_game_development
+    depends_on:
+      - game-mysql-db
+
+networks:
+  boardify-app-network:
+    driver: bridge

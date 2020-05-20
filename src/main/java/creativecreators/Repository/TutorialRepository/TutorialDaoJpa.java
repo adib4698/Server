@@ -1,5 +1,7 @@
 package creativecreators.Repository.TutorialRepository;
 import creativecreators.Entities.Tutorial;
+import creativecreators.Entities.UserCC;
+import creativecreators.Repository.UserRepository.UserPersistence;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +29,23 @@ public class TutorialDaoJpa {
                 .photos(tutorialPersistence.getPhotos())
                 .category(tutorialPersistence.getCategory())
                 .rating(tutorialPersistence.getRating())
+                .visibility(tutorialPersistence.getVisibility())
                 .build();
+    }
+    public TutorialPersistence convertTutorialToTutorialPersistence(Tutorial tutorial){
+        return tutorial == null ? null : TutorialPersistence.builder()
+                .title(tutorial.getTitle())
+                .description(tutorial.getDescription())
+                .tutorialProfile(tutorial.getTutorialProfile())
+                .video(tutorial.getVideo())
+                .photos(tutorial.getPhotos())
+                .category(tutorial.getCategory())
+                .rating(tutorial.getRating())
+                .visibility(tutorial.getVisibility())
+                .build();
+    }
+    public void addTutorial(Tutorial tutorial){
+        jpaRepository.save(convertTutorialToTutorialPersistence(tutorial));
     }
 
 }

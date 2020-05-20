@@ -7,7 +7,10 @@ import creativecreators.Service.TutorialService.TutorialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,14 @@ public class TutorialServiceImpl implements TutorialService {
                 tutorials.add(t);
         }
         return tutorials;
+    }
+
+    @Override
+    public void addTutorial(String tutorialTitle, String description, MultipartFile tutorialImage, String video, String photos, String category) {
+        Path currentPath = Paths.get(".");
+        Path absolutePath = currentPath.toAbsolutePath();
+        String finalPath = absolutePath + tutorialImage.getName();
+        tutorialDao.addTutorial(new Tutorial("0",tutorialTitle,description,finalPath,video,photos,category,0,0));
     }
 
 }

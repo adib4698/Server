@@ -1,5 +1,6 @@
 package creativecreators.Entities;
 
+import creativecreators.Repository.TutorialRepository.TutorialPersistence;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @ToString
 
-public class Tutorial {
+public class Tutorial{
     private String id;
     private String title;
     private String description;
@@ -21,6 +22,7 @@ public class Tutorial {
     private String photos;
     private String category;
     private Integer rating;
+    private Integer visibility;
 
 
 }

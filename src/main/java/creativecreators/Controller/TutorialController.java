@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -42,5 +43,12 @@ public class TutorialController {
     public ResponseEntity<List<Tutorial>> findTutorialsByCateogry(@PathVariable String category) {
         List<Tutorial> entities = service.findTutorialsByCategory(category);
         return new ResponseEntity<>(entities, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/saveTutorial/tutorialTitle/{tutorialTitle}/description/{description}/tutorialImage/{tutorialImage}/video/{video}/photos/{photos}/category/{category}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String findAllCommentsByTutorial(@PathVariable String tutorialTitle, @PathVariable String description, @PathVariable MultipartFile tutorialImage, @PathVariable String video, @PathVariable String photos, @PathVariable String category ) {
+        service.addTutorial(tutorialTitle,description,tutorialImage,video,photos,category);
+        return "OK";
     }
 }

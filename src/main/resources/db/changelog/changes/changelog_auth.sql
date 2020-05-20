@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS tutorials (
   video varchar(500),
   photos varchar(100),
   category varchar(40),
-  rating integer
+  rating integer,
+  visibility integer
 );
 
 
