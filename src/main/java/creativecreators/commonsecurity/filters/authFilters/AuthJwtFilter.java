@@ -1,7 +1,7 @@
-package creativecreators.commonsecurity.filters.authMicroserviceFilters;
+package creativecreators.commonsecurity.filters.authFilters;
 
 
-import creativecreators.commonsecurity.filters.authMicroserviceFilters.util.AuthJwtUtil;
+import creativecreators.commonsecurity.filters.authFilters.util.AuthJwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

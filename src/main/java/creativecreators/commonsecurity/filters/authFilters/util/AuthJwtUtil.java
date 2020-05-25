@@ -1,4 +1,4 @@
-package creativecreators.commonsecurity.filters.authMicroserviceFilters.util;
+package creativecreators.commonsecurity.filters.authFilters.util;
 
 
 import creativecreators.commonsecurity.config.JwtAuthenticationConfig;

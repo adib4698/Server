@@ -4,7 +4,7 @@ package creativecreators.config;
 
 import creativecreators.Service.AuthService.Impl.AuthServiceImpl;
 import creativecreators.commonsecurity.config.JwtAuthenticationConfig;
-import creativecreators.commonsecurity.filters.authMicroserviceFilters.AuthJwtFilter;
+import creativecreators.commonsecurity.filters.authFilters.AuthJwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,15 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        if(1==1) return;
-        http.csrf().disable()
-                .authorizeRequests().antMatchers(config.getLoginUrl()).permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilterBefore(authJwtFilter, UsernamePasswordAuthenticationFilter.class); //execute this filter before verifying if user is authenticated
+
+        http.csrf().disable().cors();
+
     }
 
     @Bean

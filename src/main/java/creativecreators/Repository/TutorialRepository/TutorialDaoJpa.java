@@ -44,8 +44,11 @@ public class TutorialDaoJpa {
                 .visibility(tutorial.getVisibility())
                 .build();
     }
-    public void addTutorial(Tutorial tutorial){
-        jpaRepository.save(convertTutorialToTutorialPersistence(tutorial));
-    }
 
+
+    public void addTutorial(Tutorial tutorial) {
+        jpaRepository.save(convertTutorialToTutorialPersistence(tutorial));
+    };
 }
+
+

@@ -3,7 +3,7 @@ import creativecreators.Entities.UserCC;
 import creativecreators.Repository.UserRepository.UserRepository;
 import creativecreators.Service.AuthService.exception.AuthExceptionType;
 import creativecreators.Service.AuthService.exception.AuthServiceException;
-import creativecreators.commonsecurity.filters.authMicroserviceFilters.util.AuthJwtUtil;
+import creativecreators.commonsecurity.filters.authFilters.util.AuthJwtUtil;
 import creativecreators.dto.AuthenticationResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
