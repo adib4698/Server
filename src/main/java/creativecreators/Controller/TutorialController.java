@@ -47,7 +47,7 @@ public class TutorialController {
 
     @RequestMapping(value = "/saveTutorial/tutorialTitle/{tutorialTitle}/description/{description}/tutorialImage/{tutorialImage}/video/{video}/photos/{photos}/category/{category}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String findAllCommentsByTutorial(@PathVariable String tutorialTitle, @PathVariable String description, @PathVariable MultipartFile tutorialImage, @PathVariable String video, @PathVariable String photos, @PathVariable String category ) {
+    public String findAllCommentsByTutorial(@PathVariable String tutorialTitle, @PathVariable String description, @PathVariable String tutorialImage, @PathVariable String video, @PathVariable String photos, @PathVariable String category ) {
         service.addTutorial(tutorialTitle,description,tutorialImage,video,photos,category);
         return "OK";
     }

@@ -18,6 +18,14 @@ CREATE TABLE IF NOT EXISTS tutorials (
   visibility integer
 );
 
+CREATE TABLE IF NOT EXISTS contact (
+  ID   INT(10) PRIMARY KEY AUTO_INCREMENT,
+    firstname varchar (40),
+    lastname varchar(40),
+    email varchar(100),
+    phone varchar(20),
+    comment text(5000)
+);
 
 
 

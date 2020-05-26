@@ -37,11 +37,9 @@ public class TutorialServiceImpl implements TutorialService {
     }
 
     @Override
-    public void addTutorial(String tutorialTitle, String description, MultipartFile tutorialImage, String video, String photos, String category) {
-        Path currentPath = Paths.get(".");
-        Path absolutePath = currentPath.toAbsolutePath();
-        String finalPath = absolutePath + tutorialImage.getName();
-        tutorialDao.addTutorial(new Tutorial("0",tutorialTitle,description,finalPath,video,photos,category,0,0));
+    public void addTutorial(String tutorialTitle, String description, String tutorialImage, String video, String photos, String category) {
+
+        tutorialDao.addTutorial(new Tutorial("0",tutorialTitle,description,tutorialImage,video,photos,category,0,0));
     }
 
 }

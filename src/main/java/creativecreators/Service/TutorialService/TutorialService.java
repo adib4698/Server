@@ -9,5 +9,5 @@ public interface TutorialService {
 
     List<Tutorial> findAllTutorials();
     List<Tutorial> findTutorialsByCategory(String category);
-    void addTutorial(String tutorialTitle,String description,MultipartFile tutorialImage,String video,String photos,String category);
+    void addTutorial(String tutorialTitle,String description,String tutorialImage,String video,String photos,String category);
 }

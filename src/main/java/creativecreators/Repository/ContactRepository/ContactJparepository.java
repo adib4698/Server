@@ -1,4 +1,4 @@
-package creativecreators.Repository.Contact;
+package creativecreators.Repository.ContactRepository;
 
 import creativecreators.Repository.TutorialRepository.ContactPersistence;
 import org.springframework.data.jpa.repository.JpaRepository;

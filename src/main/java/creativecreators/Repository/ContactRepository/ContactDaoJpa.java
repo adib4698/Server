@@ -1,10 +1,7 @@
-package creativecreators.Repository.Contact;
+package creativecreators.Repository.ContactRepository;
 
 import creativecreators.Entities.Contact;
-import creativecreators.Entities.Tutorial;
 import creativecreators.Repository.TutorialRepository.ContactPersistence;
-import creativecreators.Repository.TutorialRepository.TutorialJparepository;
-import creativecreators.Repository.TutorialRepository.TutorialPersistence;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +9,11 @@ import org.springframework.stereotype.Component;
 @EnableJpaRepositories(basePackageClasses = ContactJparepository.class)
 public class ContactDaoJpa {
     private ContactJparepository jpaRepository;
+
+    public ContactDaoJpa(ContactJparepository jpaRepository) {
+        this.jpaRepository = jpaRepository;
+    }
+
     public ContactPersistence convertContactToContactPersistence(Contact contact){
         return contact == null ? null : ContactPersistence.builder()
                 .id(contact.getId())

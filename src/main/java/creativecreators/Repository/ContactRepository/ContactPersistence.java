@@ -11,15 +11,15 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "tutorials")
+@Table(name = "contact")
 public class ContactPersistence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "firstName")
+    @Column(name = "firstname")
     String firstName;
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     String lastName;
     @Column(name = "email")
     String email;
