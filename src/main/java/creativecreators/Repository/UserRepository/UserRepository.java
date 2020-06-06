@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserRepository {
     public List<UserCC> findAllUsers();
-    public String save (UserCC user);
+    public String register (UserCC user);
     public UserCC findUser(String username);
 
 }

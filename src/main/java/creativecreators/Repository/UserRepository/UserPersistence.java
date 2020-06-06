@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Table(name = "user")
 public class UserPersistence {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "username")
     private String username;
     @Column(name = "password")

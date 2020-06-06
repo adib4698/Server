@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class UserCC {
-    private String userName;
+    private String username;
     private String password;
     private String nickName;
     private String email;

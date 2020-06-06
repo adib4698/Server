@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,11 +19,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private final Logger logger = LogManager.getLogger();
 
     @Autowired
     private UserService service;
-   @ApiOperation(value = "findAllUsers")
+
+
+    private final Logger logger = LogManager.getLogger();
+
+    @ApiOperation(value = "findAllUsers")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "SUCCESS", response = List.class),
     })
@@ -34,5 +34,14 @@ public class UserController {
     public ResponseEntity<List<UserCC>> findAllUsers() {
         List<UserCC> entities = service.findAllUsers();
         return new ResponseEntity<>(entities, HttpStatus.OK);
+    }
+    @ApiOperation(value = "register")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "SUCCESS", response = List.class),
+    })
+    @RequestMapping(value = "/register/username/{username}/password/{password}/nickname/{nickname}/email/{email}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String register(@PathVariable String username, @PathVariable String password, @PathVariable String nickname,@PathVariable String email) {
+        service.register(username,password,nickname,email);
+        return "Ok";
     }
 }

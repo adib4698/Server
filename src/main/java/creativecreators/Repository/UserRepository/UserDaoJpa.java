@@ -7,24 +7,29 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+
 @Component
 @EnableJpaRepositories(basePackageClasses = UserJparepository.class)
 public class UserDaoJpa implements UserRepository {
     private UserJparepository jpaRepository;
 
-    private final Logger logger = LogManager.getLogger(UserDaoJpa.class);
-
     public UserDaoJpa(UserJparepository jpaRepository) {
         this.jpaRepository = jpaRepository;
     }
+
+
+    private final Logger logger = LogManager.getLogger(UserDaoJpa.class);
+
     @Override
     public List<UserCC> findAllUsers(){
         return jpaRepository.findAll().stream().map(this::convertUserPersistenceToUser)
                 .collect(Collectors.toList());
     }
-    public String save (UserCC user){
+    public String register (UserCC user){
+        System.out.println(user.toString());
             UserPersistence userPersistence = jpaRepository.save(this.convertUserToUserPersistence(user));
-            return user.getUserName();
+            return user.getUsername();
     }
 
     @Override
@@ -45,7 +50,7 @@ public class UserDaoJpa implements UserRepository {
 
     public UserCC convertUserPersistenceToUser(UserPersistence userPersistence){
         return  userPersistence == null ? null : UserCC
-                .builder().userName(userPersistence.getUsername())
+                .builder().username(userPersistence.getUsername())
                 .password(userPersistence.getPassword())
                 .nickName(userPersistence.getNickName())
                 .email(userPersistence.getEmail())
@@ -53,7 +58,7 @@ public class UserDaoJpa implements UserRepository {
     }
     public UserPersistence convertUserToUserPersistence(UserCC user){
         return user == null ? null : UserPersistence.builder()
-                .username(user.getUserName())
+                .username(user.getUsername())
                 .password(user.getPassword())
                 .nickName(user.getNickName())
                 .email(user.getEmail())

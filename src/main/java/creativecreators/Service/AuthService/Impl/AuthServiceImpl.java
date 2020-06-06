@@ -69,7 +69,7 @@ public class AuthServiceImpl implements AuthService, UserDetailsService{
             throw new UsernameNotFoundException("Doesn't exist an user with username " + username);
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getCategory()));
         logger.info("+++++++++++++++++++++++++++++++SUCCESSFUL LOGGING loadUserByUsername+++++++++++++++++++++++++++++++");
-        return new User(user.getUserName(), user.getPassword(), authorities);
+        return new User(user.getUsername(), user.getPassword(), authorities);
     }
     private void loggingCredentials(String username, String password) {
 
